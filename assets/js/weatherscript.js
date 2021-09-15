@@ -4,6 +4,9 @@ document.getElementById('submit-wx').addEventListener('click', (e,) => {
     icao = document.getElementById('icao').value;
     let wxAddress = 'https://api.checkwx.com/metar/'+`${icao}`;
     var xhttp = new XMLHttpRequest();
+    let wxDiv = document.getElementById('wx')
+    wxDiv.classList.remove('hidden');
+    wxDiv.classList.add('block');
 
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -20,16 +23,11 @@ document.getElementById('submit-wx').addEventListener('click', (e,) => {
 });
 
 function popResults(data) {
-    // wx = data.data;
-    // num = data.results;
-    // let results = `<span class='block'>${wx}</span>`;
-    // console.log(num);
-    // document.getElementById('wxResults').innerHTML = results;
-
-
-    let resultsText = `<span class='block'>${data.data}</span>`;
-    document.getElementById('wxResults').innerHTML = resultsText;
-
-    
+    let wx = data.data;
+    let content = document.getElementById('wxResults');
+    for (let metar of wx) {
+       content.innerHTML += `<span class='block'>${metar}</span>`;
+    };
+    console.log(content);
 
 };
