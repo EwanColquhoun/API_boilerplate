@@ -1,0 +1,16 @@
+body {
+    background-color: skyblue;
+}
+
+.results-container {
+    margin: 0 auto;
+    padding: 30px;
+    width: 87%;
+    min-height: 100px;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+
+.block {
+    display: block;
+}
